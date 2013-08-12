@@ -10,11 +10,16 @@ import java.io.PrintWriter;
 
 public class TransactionLog extends AccountTransactions {
 
+	// path where .txt file is created
 	private String path = "/Users/jonathan/Documents/"; // for windows
 														// "C:\\files\\";
 	private PrintWriter writer;
 	String fileName;
 
+	/*
+	 * This is used to create the .txt file and write to it. It takes arguments
+	 * for the original balance, withdrawal/deposit and new balance.
+	 */
 	public void writeFile(String ogbalance, String transaction, String balance) {
 
 		// the try catch is required when you do
@@ -30,13 +35,14 @@ public class TransactionLog extends AccountTransactions {
 		}
 	}
 
+	// This could probably be removed...
 	public void startFile(String path) throws IOException {
-		// System.out.println(account);
 		this.path = path;
 		createFile();
 
 	}
 
+	// creates the file
 	private void createFile() throws IOException {
 		fileName = getAccountNumber() + ".txt";
 		// create the file, the true means append to
@@ -46,8 +52,9 @@ public class TransactionLog extends AccountTransactions {
 
 	}
 
+	// Handles what is written to the .txt file
 	public void addText(String ogbalance, String transaction, String balance) {
-		// add content to the file
+		// Don't write null values
 		if (getTransactionDate() != null && ogbalance != null
 				&& transaction != null && balance != null) {
 			writer.println(getTransactionDate());

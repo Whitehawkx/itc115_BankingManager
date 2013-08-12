@@ -46,6 +46,7 @@ public class DisplayForm {
 
 	String timeStamp;
 
+	// declare checking and savings classes
 	private Checking checking = new Checking();
 	private Savings savings = new Savings();
 
@@ -111,7 +112,7 @@ public class DisplayForm {
 	}
 
 	/*
-	 * Here we create a new box for entering an account number.
+	 * This handles creating a new frame to enter the account name/number.
 	 */
 	private void accountFrame() {
 		acctFrame = new JFrame();
@@ -134,6 +135,10 @@ public class DisplayForm {
 
 	}
 
+	/*
+	 * When called this creates a new frame for entering the starting balances
+	 * for checking and savings.
+	 */
 	private void balanceFrame() {
 		balanceFrame = new JFrame();
 		balanceFrame.setSize(300, 300);
@@ -159,6 +164,10 @@ public class DisplayForm {
 
 	}
 
+	/*
+	 * When the JTextFields for the setting the initial balances gain focus,
+	 * select all of the text for easy overwriting.
+	 */
 	private class focusGained implements FocusListener {
 
 		@Override
@@ -178,6 +187,10 @@ public class DisplayForm {
 
 	}
 
+	/*
+	 * Button action which then calls the methods to create the frame for
+	 * inputting the initial account balances.
+	 */
 	private class StartingBalance implements ActionListener {
 
 		@Override
@@ -191,6 +204,10 @@ public class DisplayForm {
 
 	}
 
+	/*
+	 * When the initial balances of submitted, they are set in the
+	 * AccountTransactions class for both checking and savings.
+	 */
 	private class SubmitInitialBalance implements ActionListener {
 
 		@Override
@@ -216,6 +233,9 @@ public class DisplayForm {
 		}
 	}
 
+	/*
+	 * Action for exiting the program.
+	 */
 	private class ExitEvent implements ActionListener {
 
 		@Override
@@ -227,6 +247,10 @@ public class DisplayForm {
 
 	}
 
+	/*
+	 * Button action which calls the methods to create the new frame for
+	 * entering the account name/number.
+	 */
 	private class AddAccountNumber implements ActionListener {
 
 		@Override
@@ -237,6 +261,10 @@ public class DisplayForm {
 
 	}
 
+	/*
+	 * When account name has been submitted, it is set in the AccountTransaction
+	 * class for both checking and savings.
+	 */
 	private class SubmitAccountNumber implements ActionListener {
 
 		@Override
@@ -257,12 +285,17 @@ public class DisplayForm {
 				panel.repaint();
 
 			}
-			// close the window
+			// create the .txt file immediately
 			checking.writeFile(null, null, null);
+			// close the window
 			acctFrame.dispose();
 		}
 	}
 
+	/*
+	 * This handles the action performed when making a withdrawal or deposit
+	 * from either checking or savings.
+	 */
 	private class SubmitAmount implements ActionListener {
 
 		@Override
@@ -270,6 +303,7 @@ public class DisplayForm {
 
 			// null check here to prevent crashing if no value is present
 			if (!txtAmount.getText().equals("")) {
+				// don't crash if something other than a number is entered
 				try {
 
 					double deposit = Double.parseDouble(txtAmount.getText());

@@ -7,6 +7,7 @@ public class AccountTransactions {
 	protected double checkingBalance;
 	protected double savingsBalance;
 
+	// sets and retrieves the accoungNumber
 	public String getAccountNumber() {
 		return accountNumber;
 	}
@@ -15,6 +16,7 @@ public class AccountTransactions {
 		this.accountNumber = accountNumber;
 	}
 
+	// sets and retrieves the transactionDate
 	public String getTransactionDate() {
 		return transactionDate;
 	}
@@ -23,6 +25,7 @@ public class AccountTransactions {
 		this.transactionDate = transactionDate;
 	}
 
+	// sets and retrieves checkingBalance
 	public double getCheckingBalance() {
 		return checkingBalance;
 	}
@@ -31,6 +34,7 @@ public class AccountTransactions {
 		this.checkingBalance = checkingBalance;
 	}
 
+	// sets and retrieves savingsBalance
 	public double getSavingsBalance() {
 		return savingsBalance;
 	}
